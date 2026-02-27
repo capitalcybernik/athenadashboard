@@ -915,7 +915,20 @@ function renderSkills(){
     {id:'s11',name:'OpenAI Whisper API',slug:'openai-whisper-api',version:'1.0.0',status:'installed',category:'Productivity',description:'Audio transcription via OpenAI Whisper API.',learned:true},
 
     {id:'s14',name:'GHL Integration',slug:'gohighlevel',version:'1.0.0',status:'installed',category:'CRM',description:'GoHighLevel CRM API — contacts, pipelines, campaigns. 4,878 contacts loaded.',learned:true},
-    {id:'s15',name:'CMMC Knowledge Base',slug:'cmmc',version:'1.0.0',status:'installed',category:'Security',description:'CMMC 2.0 compliance knowledge base for DoD contractor advisory.',learned:true}
+    {id:'s15',name:'CMMC Knowledge Base',slug:'cmmc',version:'1.0.0',status:'installed',category:'Security',description:'CMMC 2.0 compliance knowledge base for DoD contractor advisory.',learned:true},
+    {id:'s16',name:'M365 Mailbox (Graph)',slug:'m365-mailbox',version:'—',status:'pending',category:'Email',description:'Microsoft 365 email via Graph API. Read/send from Capital Cyber M365 accounts.',learned:false},
+    {id:'s17',name:'Outlook Email',slug:'outlook-email',version:'—',status:'pending',category:'Email',description:'Outlook email integration for reading and sending messages.',learned:false},
+    {id:'s18',name:'IMAP/SMTP Email',slug:'imap-smtp-email',version:'—',status:'pending',category:'Email',description:'Universal email access via IMAP/SMTP. Works with any provider including M365.',learned:false},
+    {id:'s19',name:'Google Calendar (gcalcli)',slug:'gcalcli-calendar',version:'—',status:'pending',category:'Calendar',description:'Google Calendar integration for scheduling, meeting tracking, and L10 rhythms.',learned:false},
+    {id:'s20',name:'Google Calendar (gogcli)',slug:'gog-calendar',version:'—',status:'pending',category:'Calendar',description:'Alternative Google Calendar integration via gogcli.',learned:false},
+    {id:'s21',name:'Zoho CRM',slug:'zoho-crm',version:'—',status:'pending',category:'CRM',description:'Zoho CRM integration for contact and deal management.',learned:false},
+    {id:'s22',name:'GHL CRM Pro',slug:'ghl-crm-pro',version:'—',status:'pending',category:'CRM',description:'Advanced GoHighLevel CRM automation and pipeline management.',learned:false},
+    {id:'s23',name:'Hylo GHL Automation',slug:'hylo-ghl',version:'—',status:'pending',category:'CRM',description:'GHL automation expert for workflows, triggers, and campaign management.',learned:false},
+    {id:'s24',name:'Grant Writer',slug:'afrexai-grant-writer',version:'—',status:'pending',category:'Grants',description:'AI-assisted grant proposal writing and application management.',learned:false},
+    {id:'s25',name:'Email to Calendar',slug:'email-to-calendar',version:'—',status:'pending',category:'Productivity',description:'Auto-extract calendar events from email content.',learned:false},
+    {id:'s26',name:'LinkedIn Inbox Manager',slug:'linkedin-inbox',version:'—',status:'pending',category:'Outreach',description:'Monitor and manage LinkedIn messages and connection requests.',learned:false},
+    {id:'s27',name:'Microsoft 365 Suite',slug:'microsoft365',version:'—',status:'pending',category:'Email',description:'Full Microsoft 365 integration — email, calendar, Teams, SharePoint.',learned:false},
+    {id:'s28',name:'PortEden Secured Email',slug:'porteden-email',version:'—',status:'pending',category:'Email',description:'Secured email access for Gmail, Outlook, Exchange via PortEden.',learned:false}
   ]);}
   const sk=LS.get('agent_skills',[]);
   const installed=sk.filter(s=>s.status==='installed');
