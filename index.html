@@ -306,7 +306,10 @@ async function loadRemoteTasks(){
 function defaultAgents(){
   const now=new Date().toISOString();
   return [
-    {id:genId(),name:'Athena',role:'Operations Manager',status:'online',model:'Claude Opus 4',desc:'Executive operations and mission control lead. Daily intel briefings, task tracking, strategic planning. Reports to COO Rick and CTO Nikhil.',capabilities:['Strategy','Operations','Intel Research','CRM Management','EOS Integration','Content Creation'],lastActive:now,activityLog:[{time:now,text:'Daily intel briefing delivered'},{time:now,text:'Mission Control dashboard deployed'}],perfNotes:'Primary AI agent. Running on OpenClaw.'},
+    {id:genId(),name:'Athena',role:'Operations Manager (Lead)',status:'online',model:'Claude Opus 4',desc:'Executive operations and mission control lead. Coordinates all sub-agents. Reports to COO Rick and CTO Nikhil.',capabilities:['Strategy','Operations','Intel Research','Task Management','EOS Integration','Content Creation'],lastActive:now,activityLog:[{time:now,text:'Daily intel briefing delivered'},{time:now,text:'Mission Control dashboard deployed'}],perfNotes:'Primary AI agent. Running on OpenClaw.'},
+    {id:genId(),name:'Hermes',role:'Intel & Research',status:'online',model:'Claude Opus 4 (sub-agent)',desc:'Daily cybersecurity intel gathering, CMMC news monitoring, grant opportunity scanning. Feeds intel briefings to Athena.',capabilities:['Web Research','Threat Intel','CMMC Monitoring','Grant Scanning','Competitor Analysis'],lastActive:now,activityLog:[{time:now,text:'Researching daily cyber intel'}],perfNotes:'Sub-agent spawned by Athena for research tasks.'},
+    {id:genId(),name:'Hephaestus',role:'Builder & Automation',status:'online',model:'Claude Opus 4 (sub-agent)',desc:'Builds dashboards, trackers, documents, and automation scripts. Handles all technical deliverables.',capabilities:['Dashboard Development','Document Generation','Data Processing','Automation','GitHub Operations'],lastActive:now,activityLog:[{time:now,text:'Dashboard updates deployed'}],perfNotes:'Sub-agent spawned by Athena for build tasks.'},
+    {id:genId(),name:'Apollo',role:'Content & Communications',status:'online',model:'Claude Opus 4 (sub-agent)',desc:'Drafts client advisories, blog posts, pitch decks, email campaigns, and marketing content.',capabilities:['Advisory Drafting','Blog Writing','Email Campaigns','Pitch Decks','Content Strategy'],lastActive:now,activityLog:[{time:now,text:'Standing by for content tasks'}],perfNotes:'Sub-agent spawned by Athena for content tasks.'},
   ];
 }
 
@@ -342,7 +345,7 @@ const tabs=[
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
   {id:'skills',icon:'🧠',label:'Skills'},
-  {id:'social',icon:'📱',label:'Social'},
+
   {id:'intel',icon:'📡',label:'Intel'},
   {id:'marketing',icon:'📧',label:'Marketing'},
 ];
@@ -391,7 +394,7 @@ function renderDashboard(){
       <div class="quick-action" onclick="switchTab('revenue')">💰 Add Client</div>
       <div class="quick-action" onclick="switchTab('meetings')">📞 Schedule Meeting</div>
       <div class="quick-action" onclick="switchTab('skills')">🧠 Skills</div>
-      <div class="quick-action" onclick="switchTab('social')">📱 Social Feed</div>
+
       <div class="quick-action" onclick="switchTab('intel')">📡 Intel Briefs</div>
       <div class="quick-action" onclick="switchTab('command')">🏢 Command Center</div>
     </div>
@@ -910,8 +913,7 @@ function renderSkills(){
     {id:'s9',name:'LinkedIn Lead Generation',slug:'linkedin-lead-generation',version:'1.0.0',status:'installed',category:'Social',description:'Generate and manage leads from LinkedIn outreach campaigns.',learned:false},
     {id:'s10',name:'AI Meeting Notes',slug:'ai-meeting-notes',version:'1.0.3',status:'installed',category:'Productivity',description:'Transcribe and summarize meeting notes with action items.',learned:true},
     {id:'s11',name:'OpenAI Whisper API',slug:'openai-whisper-api',version:'1.0.0',status:'installed',category:'Productivity',description:'Audio transcription via OpenAI Whisper API.',learned:true},
-    {id:'s12',name:'X Post Automation',slug:'x-post-automation',version:'—',status:'pending',category:'Social',description:'Automated posting to X/Twitter.',learned:false},
-    {id:'s13',name:'LinkedIn API',slug:'linkedin-api',version:'—',status:'pending',category:'Social',description:'LinkedIn API integration for posting and profile management.',learned:false},
+
     {id:'s14',name:'GHL Integration',slug:'gohighlevel',version:'1.0.0',status:'installed',category:'CRM',description:'GoHighLevel CRM API — contacts, pipelines, campaigns. 4,878 contacts loaded.',learned:true},
     {id:'s15',name:'CMMC Knowledge Base',slug:'cmmc',version:'1.0.0',status:'installed',category:'Security',description:'CMMC 2.0 compliance knowledge base for DoD contractor advisory.',learned:true}
   ]);}
