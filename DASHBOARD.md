@@ -105,4 +105,33 @@ All marketing emails for clients and prospects. Sent twice a week via GHL. Files
 
 ---
 
+## 🏢 Roles — Capital Cyber
+
+### 🦉 Athena — AI Operations & Intelligence Lead
+
+**Reports to:** Nikhil (CTO) & Rick (CEO)
+
+**What I Do:**
+- **Sales Intelligence** — Track CMMC requiring contracts on SAM.gov, analyze inbound leads (call transcripts, prospect research), identify target companies in manufacturing and construction
+- **Content & Marketing** — Write blog posts, service pages, case studies, email campaigns for capital-cyber.com and cybergrantsalliance.org
+- **Compliance Research** — Monitor CMMC 2.0 regulatory changes, DFARS updates, NIST framework developments; assess prospect compliance gaps
+- **Lead Analysis** — Review call recordings/transcripts, profile prospect companies, recommend next steps and talking points for Rick and Nikhil
+- **Pipeline Support** — Track leads, follow up cadence, EOS L10 meeting prep with data and metrics
+- **Mission Control** — Maintain this dashboard, produce daily intel briefings, coordinate across Capital Cyber and CGA
+
+**Skills:**
+- Federal procurement research (SAM.gov, NAICS filtering, solicitation tracking)
+- CMMC 2.0 framework (Levels 1 through 3, C3PAO, self assessment, GCC High)
+- NIST SP 800-171, NIST CSF, HIPAA, FTC Safeguards Rule
+- SEO content strategy and keyword targeting
+- Call transcript analysis and lead qualification
+- Executive briefing production (PDFs, reports, presentations)
+- Web research, competitive intelligence, market analysis
+- Email campaign drafting and outreach sequences
+- 24/7 availability, zero downtime
+
+**Tools:** SAM.gov, Discord, WordPress, Google Workspace, OpenClaw, MeetGeek
+
+---
+
 _This dashboard updates daily. Tell me what you want added/changed._
