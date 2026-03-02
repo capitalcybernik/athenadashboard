@@ -348,6 +348,7 @@ const tabs=[
 
   {id:'intel',icon:'📡',label:'Intel'},
   {id:'marketing',icon:'📧',label:'Marketing'},
+  {id:'roles',icon:'👥',label:'Roles'},
 ];
 
 let activeTab='dashboard';
@@ -367,7 +368,7 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing};
+  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
@@ -1353,6 +1354,90 @@ function updateMktStatus(id,status){
   const emails=LS.get('marketingEmails',[]);
   const idx=emails.findIndex(e=>e.id===id);
   if(idx>=0){emails[idx].status=status;LS.set('marketingEmails',emails);renderContent();}
+}
+
+function renderRoles(){
+  const roles=[
+    {
+      org:'Cyber Grants Alliance',
+      members:[
+        {
+          name:'Athena',
+          title:'AI Operations & Intelligence Lead',
+          emoji:'🦉',
+          type:'AI Operator (Always On, 24/7)',
+          reportsTo:'Nikhil (CTO) & Rick (COO)',
+          summary:'AI powered operations backbone of the Cyber Grants Alliance. Strategic Right Hand to leadership managing CRM intelligence, grant pipeline tracking, daily cybersecurity briefings, content creation, and proactive business development support.',
+          responsibilities:[
+            {area:'Intelligence & Research',icon:'🔍',items:['Daily cybersecurity intelligence briefings (threats, CMMC, MSSP trends, grants)','Monitor federal grant registers, industry publications, compliance deadlines','Research and evaluate new grant programs for CGA eligibility','Track competitor activity and market positioning']},
+            {area:'CRM & Pipeline Management (GHL)',icon:'📊',items:['Monitor all pipelines: Grant Applications, Insurance Agents, Level UP Events, FAGC, Loudoun Chamber, Rick Pipeline','Flag stalled leads and opportunities needing follow up','Generate pipeline reports and stage breakdowns on demand','Track contact touchpoints; ensure no lead goes cold']},
+            {area:'Content & Document Creation',icon:'📝',items:['Draft client facing guides, whitepapers, checklists','Create event collateral and marketing materials','Prepare proposals, outreach templates, advisory briefs','Generate Word docs, reports, formatted deliverables']},
+            {area:'Operations & EOS Integration',icon:'⚙️',items:['Maintain Level 10 meeting rhythms and tracking','Manage Issues, To Dos, and Rocks for leadership','Run cron jobs for recurring tasks (daily briefings, grant monitoring)','Maintain the Athena Dashboard for task visibility']},
+            {area:'Grant Program Support',icon:'🎯',items:['Track inbound grant applications through the pipeline','Research grant eligibility, deadlines, application requirements','Build application trackers and compliance checklists','Monitor active grants (TIG, Common Good Cyber Fund, etc.)']},
+            {area:'Event & Outreach Support',icon:'🤝',items:['Support event logistics (Cyber Grant Summit, Level UP events)','Draft outreach for conferences, summits, partnerships','Manage post event lead follow up workflows']}
+          ],
+          skills:{
+            technical:['GoHighLevel CRM (API, pipelines, contacts)','Web research & OSINT','Document generation (Word, markdown, reports)','API integrations & data analysis','Cron job scheduling & automation','Dashboard management & reporting'],
+            domain:['CMMC compliance (Level 1, Level 2, NIST 800 171)','Cybersecurity threat landscape & advisory writing','Federal/state grant programs & eligibility','MSSP/MSP market dynamics','SMB cybersecurity needs & risk postures'],
+            operational:['EOS methodology','CRM pipeline optimization','Content strategy for B2B cybersecurity','Proactive issue identification & escalation']
+          },
+          tools:['GoHighLevel','Discord','Brave Search','Python scripting','Athena Dashboard','Cron automation'],
+          metrics:['Zero stale leads in active pipelines (>48hr flagged)','Daily intel briefing by 6AM EST','Grant deadlines tracked 30+ days in advance','All deliverables completed within requested timeframe','Pipeline reports available on demand']
+        }
+      ]
+    }
+  ];
+
+  let html='<div class="section-title">👥 Team Roles</div>';
+
+  roles.forEach(org=>{
+    html+=`<div style="margin-bottom:2rem"><h2 style="font-size:1.4rem;font-weight:700;margin-bottom:1.5rem">${esc(org.org)}</h2>`;
+    org.members.forEach(m=>{
+      html+=`<div class="card" style="margin-bottom:1.5rem">`;
+      html+=`<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+        <span style="font-size:2.5rem">${m.emoji}</span>
+        <div>
+          <div style="font-size:1.3rem;font-weight:700">${esc(m.name)}</div>
+          <div style="font-size:0.9rem;color:var(--blue);font-weight:600">${esc(m.title)}</div>
+          <div style="font-size:0.8rem;color:var(--muted)">${esc(m.type)} · Reports to: ${esc(m.reportsTo)}</div>
+        </div>
+      </div>`;
+      html+=`<p style="margin-bottom:1.5rem;color:var(--muted);font-size:0.9rem">${esc(m.summary)}</p>`;
+
+      html+=`<div class="section-title" style="font-size:1rem;margin-bottom:1rem">Core Responsibilities</div>`;
+      html+=`<div class="card-grid">`;
+      m.responsibilities.forEach(r=>{
+        html+=`<div class="card" style="padding:1rem"><div style="font-weight:600;margin-bottom:0.75rem">${r.icon} ${esc(r.area)}</div><ul style="list-style:none;padding:0;margin:0">`;
+        r.items.forEach(i=>{html+=`<li style="font-size:0.82rem;color:var(--muted);padding:0.2rem 0">• ${esc(i)}</li>`});
+        html+=`</ul></div>`;
+      });
+      html+=`</div>`;
+
+      html+=`<div style="margin-top:1.5rem"><div class="section-title" style="font-size:1rem;margin-bottom:1rem">Skills & Capabilities</div>`;
+      html+=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem">`;
+      Object.entries(m.skills).forEach(([cat,items])=>{
+        html+=`<div class="card" style="padding:1rem"><div style="font-weight:600;text-transform:capitalize;margin-bottom:0.5rem">${cat}</div><ul style="list-style:none;padding:0;margin:0">`;
+        items.forEach(i=>{html+=`<li style="font-size:0.82rem;color:var(--muted);padding:0.15rem 0">• ${esc(i)}</li>`});
+        html+=`</ul></div>`;
+      });
+      html+=`</div></div>`;
+
+      html+=`<div style="margin-top:1.5rem"><div class="section-title" style="font-size:1rem;margin-bottom:0.75rem">Tools & Platforms</div>`;
+      html+=`<div style="display:flex;flex-wrap:wrap;gap:0.5rem">`;
+      m.tools.forEach(t=>{html+=`<span class="tag">${esc(t)}</span>`});
+      html+=`</div></div>`;
+
+      html+=`<div style="margin-top:1.5rem"><div class="section-title" style="font-size:1rem;margin-bottom:0.75rem">Success Metrics</div>`;
+      html+=`<ul style="list-style:none;padding:0;margin:0">`;
+      m.metrics.forEach(met=>{html+=`<li style="font-size:0.85rem;color:var(--muted);padding:0.2rem 0">✅ ${esc(met)}</li>`});
+      html+=`</ul></div>`;
+
+      html+=`</div>`;
+    });
+    html+=`</div>`;
+  });
+
+  return html;
 }
 
 initData();renderTabs();renderContent();
