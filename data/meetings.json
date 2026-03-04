@@ -1,0 +1,85 @@
+[
+  {
+    "id": "mtg-2026-03-03-rich-kelly",
+    "title": "Rich Kelly and Nikhil Catchup",
+    "date": "2026-03-03T16:00:00Z",
+    "location": "Microsoft Teams",
+    "attendees": ["Nikhil Bon", "Rick Dassler", "Rich Kelly"],
+    "source": "MeetGeek",
+    "sourceLink": "https://app.meetgeek.ai/meeting/2fdb7a07-7bc2-470a-a02d-eb527302c99b",
+    "summary": "Sales and relationship meeting with Rich Kelly (Renwood VoIP, Kelly Signature Construction, Strategic Results Group, MKR Capital Management). Discussed transitioning his VA Louise to reduced hours, introducing AI employee (OpenClaw) service, and cybersecurity posture.",
+    "actionItems": [
+      {
+        "owner": "Nikhil",
+        "task": "Spin up an OpenClaw AI employee instance for Rich by Monday next week",
+        "due": "2026-03-09",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "owner": "Nikhil",
+        "task": "Give Louise a heads up about the transition plan (reduced hours starting April)",
+        "due": "2026-03-15",
+        "status": "pending",
+        "priority": "high"
+      },
+      {
+        "owner": "Nikhil",
+        "task": "Send Rich the CMMC Ready Now website link and AI employee info after the call",
+        "due": "2026-03-04",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "owner": "Rick",
+        "task": "Talk to Pat (Rich's partner) about cybersecurity insurance and Renwood operations",
+        "due": "2026-03-14",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "owner": "Nikhil/Rick",
+        "task": "Set up weekly 15-30 min check-in call with Rich (and Pat) starting April for AI employee feedback",
+        "due": "2026-04-01",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "owner": "Rich",
+        "task": "Send Louise's current task process documentation (SweetProcess) to Nikhil",
+        "due": "2026-03-14",
+        "status": "pending",
+        "priority": "medium"
+      },
+      {
+        "owner": "Nikhil",
+        "task": "Confirm pricing email to Rich: March at current rate, April at $500-600/mo (Louise 1hr/day + AI employee)",
+        "due": "2026-03-05",
+        "status": "pending",
+        "priority": "high"
+      }
+    ],
+    "decisions": [
+      "March: Keep Louise at current rate, spin up AI employee this month",
+      "April onwards: Reduce to $500-600/mo (Louise 1hr/day + AI employee)",
+      "Rich commits to April and May trial, with option to continue",
+      "Weekly 15 min check-in calls for feedback during trial",
+      "Include Pat on the weekly calls",
+      "Cybersecurity services: Rich declined for now (cost vs risk rationale)",
+      "Referral/reseller model: Not viable for Rich (needs 50% margin, risk to existing relationships)"
+    ],
+    "keyIntel": {
+      "richBusinesses": [
+        {"name": "Renwood", "type": "VoIP/Telecom", "revenue": "Over $1M", "endpoints": "5-7 computers", "notes": "200+ clients on unified platform, daily patching"},
+        {"name": "Kelly Signature", "type": "Construction", "revenue": "Close to $1M", "endpoints": "6-8 subcontractors with computers", "notes": "40% net margin, very selective on jobs"},
+        {"name": "Strategic Results Group", "type": "Tax Planning/Consulting", "revenue": "Over $1M", "endpoints": "2-3", "notes": "Personal consulting brand"},
+        {"name": "MKR Capital Management", "type": "Family Investment Office", "revenue": "Manages multi-million", "endpoints": "3 (overlap with others)", "notes": "Where the money comes from"}
+      ],
+      "techCapabilities": "Rich has built AI answering service, expense management, voice transcription on Replit. Planning migration to AWS. Very technical (20 years Wall Street development, built every off-exchange trading venue).",
+      "tonyRobbins": "Rich is on Tony Robbins staff (internal employee, unpaid). Has full access to Slack, events. Connected to OBV.io (Obvio) which runs all large-scale Zoom streaming for TR events. Connected to JV (Joseph, Success Circles). Mentioned Scale.gg/VIP as a tool.",
+      "competitorMentioned": "Centra AI ($200/year, 12 purpose-built AI bots). Rich compared OpenClaw to it. Doing $6-10M/month revenue.",
+      "cybersecurityPosture": "Had a pen test (bad report). Choosing to accept risk. Uses different 16-digit passwords, dark web monitoring. Employees less disciplined. No confirmed cyber liability insurance. Policy: delete unexpected emails, verify before clicking.",
+      "louiseCurrentTasks": "Weekly website status checks (2 client sites), plugin/update monitoring, basic Facebook/LinkedIn engagement (birthdays, congratulations). Roughly 1 hour/day."
+    }
+  }
+]

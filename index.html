@@ -273,6 +273,41 @@ function initData(){
   if(!LS.get('marketingEmails'))LS.set('marketingEmails',defaultMarketingEmails());
   loadRemoteIntel();
   loadRemoteTasks();
+  loadRemoteMeetings();
+}
+
+async function loadRemoteMeetings(){
+  try{
+    const r=await fetch('data/meetings.json?t='+Date.now());
+    if(!r.ok)return;
+    const remote=await r.json();
+    const local=LS.get('meetings',[]);
+    remote.forEach(rm=>{
+      if(!local.find(l=>l.id===rm.id)){
+        // Convert transcript meeting to dashboard format
+        const dt=new Date(rm.date);
+        const entry={
+          id:rm.id,
+          title:rm.title,
+          date:dt.toISOString().slice(0,10),
+          time:dt.toTimeString().slice(0,5),
+          type:'call',
+          attendees:(rm.attendees||[]).join(', '),
+          prep:rm.summary||'',
+          notes:rm.summary||'',
+          agenda:[],
+          actions:(rm.actionItems||[]).map(a=>({text:a.task+(a.due?' (Due: '+a.due+')':''),assignee:a.owner||'',status:a.status||'pending'})),
+          source:rm.source||'',
+          sourceLink:rm.sourceLink||'',
+          decisions:rm.decisions||[],
+          keyIntel:rm.keyIntel||null,
+          fromTranscript:true
+        };
+        local.unshift(entry);
+      }
+    });
+    LS.set('meetings',local);
+  }catch(e){console.log('meetings.json not loaded',e)}
 }
 
 async function loadRemoteIntel(){
@@ -826,7 +861,10 @@ function meetingCard(m,isToday,isPastMeeting){
         <div style="font-weight:700;font-size:1.05rem">${esc(m.title)}</div>
         <div style="font-size:0.85rem;color:var(--muted);margin-top:0.25rem">${fmtDate(m.date)} at ${m.time||'TBD'} · <span class="badge ${typeBadge}">${m.type}</span></div>
         ${m.attendees?`<div style="font-size:0.8rem;color:var(--gray);margin-top:0.25rem">👥 ${esc(m.attendees)}</div>`:''}
-        ${m.prep?`<div style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">${esc(m.prep.slice(0,100))}${m.prep.length>100?'...':''}</div>`:''}
+        ${m.fromTranscript?`<span class="badge" style="background:var(--purple);color:#fff;font-size:0.7rem;margin-top:0.25rem;display:inline-block">🎙️ Transcript</span>`:''}
+        ${m.sourceLink?` <a href="${m.sourceLink}" target="_blank" style="font-size:0.7rem">View in ${m.source||'Source'}</a>`:''}
+        ${m.prep&&!m.fromTranscript?`<div style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">${esc(m.prep.slice(0,100))}${m.prep.length>100?'...':''}</div>`:''}
+        ${m.fromTranscript&&m.notes?`<div style="font-size:0.8rem;color:var(--muted);margin-top:0.35rem">${esc(m.notes.slice(0,150))}${m.notes.length>150?'...':''}</div>`:''}
       </div>
       <span style="color:var(--muted);font-size:0.8rem">${exp?'▲':'▼'}</span>
     </div>`;
@@ -846,8 +884,18 @@ function meetingCard(m,isToday,isPastMeeting){
       </div>
       <div style="font-weight:600;font-size:0.85rem;margin:1rem 0 0.5rem">📝 Notes</div>
       <textarea class="form-textarea" rows="3" onchange="saveMeetingNotes('${m.id}',this.value)">${esc(m.notes||'')}</textarea>
+      ${m.decisions&&m.decisions.length?`<div style="font-weight:600;font-size:0.85rem;margin:1rem 0 0.5rem">🔑 Decisions</div>
+      ${m.decisions.map(d=>`<div style="font-size:0.85rem;padding:0.3rem 0;border-bottom:1px solid var(--border)">• ${esc(d)}</div>`).join('')}`:''}
+      ${m.keyIntel?`<div style="font-weight:600;font-size:0.85rem;margin:1rem 0 0.5rem">🔍 Key Intel</div>
+      <div style="font-size:0.8rem;background:rgba(59,130,246,0.05);padding:0.75rem;border-radius:8px;border:1px solid rgba(59,130,246,0.1)">
+        ${m.keyIntel.richBusinesses?`<div style="margin-bottom:0.5rem"><strong>Businesses:</strong> ${m.keyIntel.richBusinesses.map(b=>b.name+' ('+b.type+', '+b.revenue+')').join(' · ')}</div>`:''}
+        ${m.keyIntel.techCapabilities?`<div style="margin-bottom:0.5rem"><strong>Tech:</strong> ${esc(m.keyIntel.techCapabilities.slice(0,200))}</div>`:''}
+        ${m.keyIntel.competitorMentioned?`<div style="margin-bottom:0.5rem"><strong>Competitor:</strong> ${esc(m.keyIntel.competitorMentioned)}</div>`:''}
+        ${m.keyIntel.cybersecurityPosture?`<div><strong>Cyber Posture:</strong> ${esc(m.keyIntel.cybersecurityPosture.slice(0,200))}</div>`:''}
+      </div>`:''} 
       <div style="font-weight:600;font-size:0.85rem;margin:1rem 0 0.5rem">✅ Action Items</div>
       ${actions.map((a,i)=>`<div class="action-item">${esc(a.text)} <span style="color:var(--blue);font-size:0.75rem">→ ${esc(a.assignee||'Unassigned')}</span>
+        ${a.status?`<span class="badge" style="font-size:0.65rem;margin-left:0.5rem;background:${a.status==='done'?'var(--green)':a.status==='in-progress'?'var(--orange)':'var(--yellow)'};color:#fff">${a.status}</span>`:''}
         <button class="btn btn-danger btn-sm" style="margin-left:auto;padding:0.15rem 0.4rem" onclick="removeAction('${m.id}',${i})">✕</button>
       </div>`).join('')}
       <div style="display:flex;gap:0.5rem;margin-top:0.5rem">
@@ -909,9 +957,7 @@ function renderSkills(){
     {id:'s4',name:'Cyber Security Engineer',slug:'cyber-security-engineer',version:'0.1.4',status:'installed',category:'Security',description:'Cybersecurity engineering assistance for assessments and architecture.',learned:true},
     {id:'s5',name:'Email Marketing',slug:'email-marketing',version:'1.0.0',status:'installed',category:'Marketing',description:'Email campaign creation, optimization, and management.',learned:true},
     {id:'s6',name:'Email Daily Summary',slug:'email-daily-summary',version:'0.1.0',status:'installed',category:'Productivity',description:'Auto-login and summarize email inbox daily across Gmail, Outlook, etc.',learned:false},
-    {id:'s7',name:'OpenClaw Social Scheduler',slug:'openclaw-social-scheduler',version:'0.1.0',status:'installed',category:'Social',description:'Social media scheduling and automation for multiple platforms.',learned:false},
     {id:'s8',name:'Marketing Mode',slug:'marketing-mode',version:'1.0.0',status:'installed',category:'Marketing',description:'Marketing content generation with strategy and copy frameworks.',learned:true},
-    {id:'s9',name:'LinkedIn Lead Generation',slug:'linkedin-lead-generation',version:'1.0.0',status:'installed',category:'Social',description:'Generate and manage leads from LinkedIn outreach campaigns.',learned:false},
     {id:'s10',name:'AI Meeting Notes',slug:'ai-meeting-notes',version:'1.0.3',status:'installed',category:'Productivity',description:'Transcribe and summarize meeting notes with action items.',learned:true},
     {id:'s11',name:'OpenAI Whisper API',slug:'openai-whisper-api',version:'1.0.0',status:'installed',category:'Productivity',description:'Audio transcription via OpenAI Whisper API.',learned:true},
 
