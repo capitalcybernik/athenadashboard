@@ -373,6 +373,7 @@ function isPast(d){return new Date(d)<new Date()&&!isToday(d)}
 // ===== TABS =====
 const tabs=[
   {id:'dashboard',icon:'📊',label:'Dashboard'},
+  {id:'athena-tasks',icon:'🦉',label:'Athena Tasks'},
   {id:'projects',icon:'📋',label:'Projects'},
   {id:'timeline',icon:'🎯',label:'Timeline'},
   {id:'notes',icon:'📝',label:'Notes'},
@@ -380,7 +381,6 @@ const tabs=[
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
   {id:'skills',icon:'🧠',label:'Skills'},
-
   {id:'intel',icon:'📡',label:'Intel'},
   {id:'marketing',icon:'📧',label:'Marketing'},
   {id:'roles',icon:'👥',label:'Roles'},
@@ -403,37 +403,68 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,roles:renderRoles};
+  const renderers={dashboard:renderDashboard,'athena-tasks':renderAthenaTasks,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
 }
 
 // ===== DASHBOARD =====
 function renderDashboard(){
-  const projects=LS.get('projects',[]);
-  const notes=LS.get('notes',[]);
-  const clients=LS.get('clients',[]);
-  const mrr=clients.filter(c=>c.status==='active').reduce((s,c)=>s+Number(c.value||0),0);
-  const tasksDue=projects.filter(p=>p.status==='active').length;
+  const priorities=LS.get('dashboard_priorities',[
+    {id:'p1',title:'CMMC Gap Assessment Grant Page',description:'Build the grant application landing page for CMMC gap assessment services. Target: municipalities and DIB contractors needing funded cybersecurity assessments.',status:'in-progress',owner:'Team',icon:'🛡️'},
+    {id:'p2',title:'Press Release',description:'Draft and distribute press release for Capital Cyber / Cyber Grants Alliance announcements.',status:'pending',owner:'Rick/Nikhil',icon:'📰'},
+    {id:'p3',title:'Cyber Grant Summit — Speakers & Marketing',description:'Outreach to MEP (Manufacturing Extension Partnership) centers. Secure speakers and drive marketing for the Cyber Grant Summit.',status:'in-progress',owner:'Nikhil/Rick',icon:'🎤'},
+    {id:'p4',title:'Two Hour Block for RGA',description:'Dedicated two hour block for RGA (Risk & Gap Assessment) work. Schedule and protect this time weekly.',status:'pending',owner:'Rick/Nikhil',icon:'⏰'}
+  ]);
+  if(!LS.get('dashboard_priorities'))LS.set('dashboard_priorities',priorities);
+
+  const statusColors={'in-progress':'var(--blue)','pending':'var(--orange)','completed':'var(--green)','blocked':'var(--red)'};
+  const statusLabels={'in-progress':'In Progress','pending':'Pending','completed':'Done','blocked':'Blocked'};
+
   return `
     <div class="welcome">Good ${getGreeting()}, Commander</div>
-    <div class="welcome-sub">Capital Cyber Mission Control — All systems operational</div>
-    <div class="stats-grid">
-      <div class="card stat-card"><div class="stat-value">${fmtMoney(mrr)}</div><div class="stat-label">Current MRR</div></div>
-      <div class="card stat-card"><div class="stat-value">${projects.length}</div><div class="stat-label">Active Projects</div></div>
-      <div class="card stat-card"><div class="stat-value">${tasksDue}</div><div class="stat-label">Tasks Due</div></div>
-      <div class="card stat-card"><div class="stat-value">${notes.length}</div><div class="stat-label">Notes</div></div>
+    <div class="welcome-sub">Capital Cyber & Cyber Grants Alliance — Mission Control</div>
+    <div class="section-title" style="margin-top:1.5rem">🎯 Top Priorities</div>
+    <div class="section-sub">The most important things right now</div>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(350px,1fr))">
+      ${priorities.map((p,i)=>`
+        <div class="card" style="border-left:4px solid ${statusColors[p.status]||'var(--muted)'}">
+          <div style="display:flex;justify-content:space-between;align-items:start">
+            <div style="font-size:1.5rem">${p.icon}</div>
+            <span class="badge" style="background:${statusColors[p.status]||'var(--muted)'};color:#fff;font-size:0.7rem">${statusLabels[p.status]||p.status}</span>
+          </div>
+          <div style="font-weight:700;font-size:1.1rem;margin:0.75rem 0 0.5rem">${esc(p.title)}</div>
+          <div style="font-size:0.85rem;color:var(--muted);line-height:1.5">${esc(p.description)}</div>
+          <div style="font-size:0.8rem;color:var(--gray);margin-top:0.75rem">👤 ${esc(p.owner)}</div>
+          <div style="display:flex;gap:0.5rem;margin-top:0.75rem;flex-wrap:wrap">
+            ${['pending','in-progress','completed','blocked'].map(s=>
+              `<button class="btn btn-sm ${p.status===s?'btn-primary':'btn-ghost'}" style="font-size:0.7rem;padding:0.2rem 0.5rem" onclick="updatePriority('${p.id}','${s}')">${statusLabels[s]}</button>`
+            ).join('')}
+          </div>
+        </div>
+      `).join('')}
     </div>
-    <div class="section-title">⚡ Quick Actions</div>
+    <div class="section-title" style="margin-top:2rem">⚡ Quick Actions</div>
     <div class="quick-actions">
-      <div class="quick-action" onclick="switchTab('projects')">📋 New Project</div>
-      <div class="quick-action" onclick="switchTab('revenue')">💰 Add Client</div>
-      <div class="quick-action" onclick="switchTab('meetings')">📞 Schedule Meeting</div>
-      <div class="quick-action" onclick="switchTab('skills')">🧠 Skills</div>
-
+      <div class="quick-action" onclick="switchTab('athena-tasks')">🦉 Athena Tasks</div>
+      <div class="quick-action" onclick="switchTab('meetings')">📞 Meetings</div>
       <div class="quick-action" onclick="switchTab('intel')">📡 Intel Briefs</div>
+      <div class="quick-action" onclick="switchTab('projects')">📋 Projects</div>
+      <div class="quick-action" onclick="switchTab('revenue')">💰 Revenue</div>
       <div class="quick-action" onclick="switchTab('command')">🏢 Command Center</div>
-    </div>
+    </div>`;
+}
+
+function updatePriority(id,status){
+  const p=LS.get('dashboard_priorities',[]);
+  const item=p.find(x=>x.id===id);
+  if(item){item.status=status;LS.set('dashboard_priorities',p);renderContent()}
+}
+
+// ===== ATHENA TASKS TAB =====
+function renderAthenaTasks(){
+  return `<div class="section-title">🦉 Athena Tasks</div>
+    <div class="section-sub">Tasks generated from daily intel briefings. Approve or reject to direct Athena.</div>
     ${renderCronTasks()}`;
 }
 
@@ -446,7 +477,7 @@ function renderCronTasks(){
   // Group by date
   const byDate={};
   tasks.forEach(t=>{const d=fmtDate(t.date);if(!byDate[d])byDate[d]=[];byDate[d].push(t);});
-  let html='<div class="section-title" style="margin-top:2rem">🦉 Athena Daily Tasks</div><div class="section-sub">Tasks generated from daily intel briefings. Approve or reject to direct Athena.</div>';
+  let html='';
   Object.keys(byDate).sort((a,b)=>new Date(b)-new Date(a)).forEach(date=>{
     html+=`<div style="font-weight:600;margin:1rem 0 0.5rem;color:var(--muted);font-size:0.85rem">📅 ${date}</div>`;
     html+='<div class="card-grid">'+byDate[date].map(t=>`
