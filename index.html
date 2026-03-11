@@ -379,6 +379,7 @@ const tabs=[
   {id:'timeline',icon:'🎯',label:'Timeline'},
   {id:'notes',icon:'📝',label:'Notes'},
   {id:'revenue',icon:'💰',label:'Revenue'},
+  {id:'agents',icon:'🤖',label:'Agents'},
   {id:'command',icon:'🏢',label:'Command Center'},
   {id:'meetings',icon:'📞',label:'Meetings'},
   {id:'skills',icon:'🧠',label:'Skills'},
@@ -404,9 +405,60 @@ function switchTab(id){
 // ===== MAIN RENDER =====
 function renderContent(){
   const el=document.getElementById('mainContent');
-  const renderers={dashboard:renderDashboard,mission:renderMission,'athena-tasks':renderAthenaTasks,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,roles:renderRoles};
+  const renderers={dashboard:renderDashboard,mission:renderMission,'athena-tasks':renderAthenaTasks,agents:renderAgents,projects:renderProjects,timeline:renderTimeline,notes:renderNotes,revenue:renderRevenue,command:renderCommand,meetings:renderMeetings,skills:renderSkills,social:renderSocial,intel:renderIntel,marketing:renderMarketing,roles:renderRoles};
   el.innerHTML=`<div class="tab-content active">${(renderers[activeTab]||renderers.dashboard)()}</div>`;
   if(activeTab==='meetings')startCountdowns();
+}
+
+// ===== AGENTS =====
+async function loadAgentsData(){
+  try{
+    const r=await fetch('data/agents.json?t='+Date.now());
+    if(!r.ok)return;
+    const agents=await r.json();
+    LS.set('sub_agents',agents);
+  }catch(e){console.log('agents.json not loaded',e)}
+}
+loadAgentsData();
+
+function renderAgents(){
+  const agents=LS.get('sub_agents',[]);
+  const cats=[...new Set(agents.map(a=>a.category))];
+  return `
+    <div class="section-title">🤖 Athena's Sub-Agents</div>
+    <div class="section-sub">Specialized AI agents for Capital Cyber & CGA operations. Click to expand capabilities and use cases.</div>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:1rem 0">
+      ${cats.map(c=>`<span class="badge" style="background:var(--surface);border:1px solid var(--border);cursor:default">${c}</span>`).join('')}
+    </div>
+    ${cats.map(cat=>`
+      <div class="section-title" style="font-size:1rem;margin-top:1.5rem">${cat}</div>
+      <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">
+        ${agents.filter(a=>a.category===cat).map(a=>`
+          <div class="card" style="border-left:4px solid ${a.color};cursor:pointer" onclick="this.querySelector('.agent-detail').style.display=this.querySelector('.agent-detail').style.display==='none'?'block':'none'">
+            <div style="display:flex;align-items:center;gap:0.75rem">
+              <span style="font-size:2rem">${a.emoji}</span>
+              <div>
+                <div style="font-weight:700;font-size:1.1rem">${esc(a.name)}</div>
+                <div style="font-size:0.8rem;color:var(--muted)">${esc(a.role)}</div>
+              </div>
+            </div>
+            <div style="font-size:0.85rem;color:var(--text);margin-top:0.75rem;line-height:1.5">${esc(a.vibe)}</div>
+            <div class="agent-detail" style="display:none;margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem">
+              <div style="font-size:0.85rem;color:var(--muted);line-height:1.6;margin-bottom:0.75rem">${esc(a.description)}</div>
+              <div style="font-weight:600;font-size:0.8rem;margin-bottom:0.5rem">Capabilities</div>
+              <div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.75rem">
+                ${(a.capabilities||[]).map(c=>`<span class="badge" style="background:${a.color}22;color:${a.color};border:1px solid ${a.color}44;font-size:0.7rem">${esc(c)}</span>`).join('')}
+              </div>
+              <div style="font-weight:600;font-size:0.8rem;margin-bottom:0.35rem">When to Use</div>
+              <div style="font-size:0.8rem;color:var(--muted);line-height:1.5">${esc(a.useWhen)}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `).join('')}
+    <div class="card" style="margin-top:2rem;text-align:center;padding:1.5rem;border:1px dashed var(--border)">
+      <div style="font-size:0.9rem;color:var(--muted)">Source: <a href="https://github.com/msitarzewski/agency-agents" target="_blank">agency-agents</a> by msitarzewski — adapted for Capital Cyber / CGA ops</div>
+    </div>`;
 }
 
 // ===== MISSION =====
