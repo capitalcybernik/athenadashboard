@@ -84,6 +84,7 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
   <div class="nav-item active" data-section="dashboard"><span class="ni">📊</span>Dashboard</div>
   <div class="nav-item" data-section="pipeline"><span class="ni">🔀</span>Pipeline</div>
   <div class="nav-item" data-section="upcoming"><span class="ni">📅</span>Upcoming</div>
+  <div class="nav-item" data-section="notes"><span class="ni">📝</span>Notes</div>
   <div class="nav-item" data-section="settings"><span class="ni">⚙️</span>Settings</div>
  </div>
  <div class="sidebar-footer">
@@ -97,8 +98,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <div class="section active" id="dashboard">
  <h1 class="page-title">Dashboard</h1>
  <div class="summary-cards">
-  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">15</div></div>
-  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">13</div></div>
+  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">10</div></div>
+  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">9</div></div>
   <div class="s-card"><div class="label">Gap Assessment Approved</div><div class="value" id="dash-approved">1</div></div>
   <div class="s-card"><div class="label">Gap Assessment Completed</div><div class="value" id="dash-completed">0</div></div>
   <div class="s-card"><div class="label">Pipeline Value</div><div class="value editable" id="dash-pipeline-val" onclick="editPipelineValue(this)">$245,000</div></div>
@@ -157,6 +158,72 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
  </div>
 </div>
 
+<!-- NOTES -->
+<div class="section" id="notes">
+ <h1 class="page-title">Notes</h1>
+
+ <div class="upcoming-card" style="margin-bottom:24px">
+  <h2>Project Spectrum</h2>
+  <div class="uc-type">Competitive/Partner Research · <a href="https://www.projectspectrum.io/" target="_blank" style="color:#4a6cf7">projectspectrum.io</a></div>
+
+  <div class="uc-section">
+   <h3>What It Is</h3>
+   <p>A free, DoD supported initiative run by the Office of Small Business Programs (OSBP) under NDAA 2019 Sec. 1644. It provides an online platform with cybersecurity information, resources, tools, and training for small and mid sized businesses in the Defense Industrial Base (DIB). The DoD promotes it as their preferred resource for SMBs pursuing CMMC compliance.</p>
+  </div>
+
+  <div class="uc-section">
+   <h3>Who It Helps</h3>
+   <ul>
+    <li>Small and mid sized businesses (SMBs) in the DIB</li>
+    <li>Federal manufacturing supply chain companies</li>
+    <li>Universities and institutions</li>
+    <li>Mentor Protege Program (MPP) Pilot participants (small business protégés paired with larger DoD contractors)</li>
+   </ul>
+  </div>
+
+  <div class="uc-section">
+   <h3>What It Provides</h3>
+   <ul>
+    <li><strong>Self assessments:</strong> Cyber Readiness Check that maps to CMMC/NIST controls. Gives a score and basic guidance. However, assessments are surface level and do not go deep into implementation evidence.</li>
+    <li><strong>Training courses:</strong> Five video courses (~1 hour each) covering CUI, SSP, POA&M, and FOCI. Also "Bits & Bytes" short courses on individual CMMC L1 controls. Content is introductory only.</li>
+    <li><strong>Info Hub:</strong> Blogs, white papers, video tips, and policies. Blog series covers all CMMC L1 controls but has known gaps (e.g., missing PAOBOAU requirements in access control).</li>
+    <li><strong>Events/webinars:</strong> Occasional webinars with guest speakers from NSA, CyberAB, etc. Infrequent (roughly two per year).</li>
+    <li><strong>Partner programs:</strong> Partnerships with MEP, SBA, and CyberAB.</li>
+   </ul>
+  </div>
+
+  <div class="uc-section">
+   <h3>Does It Provide Policy Documents?</h3>
+   <p><strong>No.</strong> Project Spectrum does not provide actual policy templates, SSP templates, or compliance documentation. It offers awareness and introductory training, but companies still need to write their own policies, build their own SSP, and document evidence of implementation. This is a major gap.</p>
+  </div>
+
+  <div class="uc-section">
+   <h3>Does It Help with Implementation?</h3>
+   <p><strong>Minimal.</strong> The training is high level and conceptual. It introduces what controls require but does not walk companies through how to implement them in their specific environment. Independent reviewers note the content is "mediocre" and companies "may find it difficult to apply concepts to their organization." Video tips are outdated (last published 2020, still reference CMMC 1.0 naming).</p>
+  </div>
+
+  <div class="uc-section" style="background:#f0f7ff;border-radius:8px;padding:16px;margin-top:12px">
+   <h3>💡 CGA/Capital Cyber Opportunity</h3>
+   <p><strong>Applicants who used Project Spectrum will likely have:</strong></p>
+   <ul>
+    <li>Basic awareness of CMMC requirements</li>
+    <li>A self assessment score (but not a thorough gap analysis)</li>
+    <li>No actual policy documents or SSP</li>
+    <li>No evidence packages for C3PAO assessment</li>
+    <li>No implementation guidance for their specific environment</li>
+   </ul>
+   <p style="margin-top:12px"><strong>What we can offer before and after the gap assessment:</strong></p>
+   <ul>
+    <li><strong>Before:</strong> Our gap assessment goes far deeper than Project Spectrum's self assessment. We ask about actual processes, review logs, verify controls. This gives them a real picture vs. the surface level check they got from PS.</li>
+    <li><strong>After:</strong> Policy document creation, SSP development, POA&M remediation support, implementation guidance, monthly compliance management, C3PAO readiness prep. Project Spectrum gives them awareness. We give them the execution.</li>
+    <li><strong>Sub compliance:</strong> For companies evaluating their own subcontractors (like SimIS), we can assess their subs at L1/L2.</li>
+    <li><strong>Tracking tools:</strong> Recommend IntelliGRC for larger orgs, CGA tracking software for smaller shops (2 to 10 employees).</li>
+   </ul>
+   <p style="margin-top:12px"><strong>Talk track:</strong> "Project Spectrum is a great starting point for awareness, but it doesn't do the work for you. It won't write your policies, build your SSP, or prepare you for a C3PAO audit. That's where we come in."</p>
+  </div>
+ </div>
+</div>
+
 <!-- SETTINGS -->
 <div class="section" id="settings">
  <h1 class="page-title">Settings</h1>
@@ -170,21 +237,16 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <script>
 const STAGES = ['Applied','Gap Assessment Approved','Gap Assessment Completed'];
 const DEFAULT_CARDS = [
- {id:1,name:'Camille Jones',company:'Seed Technologies LLC',location:'Alexandria, VA',revenue:'Under $1M',detail:'2 person robotics/aerospace',grant:'CMMC Tracking Software',stars:4,stage:0},
+ {id:1,name:'Camille Jones',company:'Seed Technologies LLC',location:'Alexandria, VA',revenue:'Under $1M',detail:'2 person robotics/aerospace, former Boeing engineer',grant:'CMMC Tracking Software',stars:4,stage:0,research:'https://sonic-falcon-8xk9.here.now/'},
  {id:2,name:'Anup Kumar',company:'Telco United',location:'Ashburn, VA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0,flag:'TEST SUBMISSION'},
- {id:3,name:'Rachel Banks',company:'AHR Metals',location:'Bessemer, AL',revenue:'$5M\u2013$25M',detail:'Industrial contractors',grant:'CMMC Gap Assessment',stars:4,stage:0},
- {id:4,name:'Gwendolyn Wilder',company:'SealingLife Technology LLC',location:'Lexington, KY',revenue:'Under $1M',detail:'Aerospace/defense manufacturer, AS9100/ISO 9001 certified',grant:'Pen Testing Grant',stars:4,stage:0},
- {id:5,name:'Joe Miller',company:'',location:'Santa Ana, CA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:6,name:'Brandon Hoag',company:'',location:'Dexter, MI',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:7,name:'Aaron Nisbet',company:'',location:'Everett, WA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:8,name:'John Newman',company:'',location:'Albuquerque, NM',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:9,name:'Jim Mikelson',company:'Mikelson Machine Shop Inc',location:'South El Monte, CA',revenue:'~$3M',detail:'',grant:'CMMC Gap Assessment',stars:2.5,stage:0},
+ {id:3,name:'Rachel Banks',company:'AHR Metals',location:'Bessemer, AL',revenue:'$5M to $25M',detail:'Industrial contractors/metals',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://alpine-island-qgqh.here.now/'},
+ {id:4,name:'Gwendolyn Wilder',company:'SealingLife Technology LLC',location:'Lexington, KY',revenue:'Under $1M',detail:'Aerospace/defense manufacturer, AS9100/ISO 9001 certified',grant:'Pen Testing Grant',stars:4,stage:0,research:'https://serene-plume-qdsz.here.now/'},
+ {id:5,name:'Joe Miller',company:'',location:'Santa Ana, CA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://nutmeg-temple-mrs4.here.now/'},
+ {id:6,name:'Brandon Hoag',company:'',location:'Dexter, MI',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://hallowed-hollow-qsve.here.now/'},
+ {id:7,name:'Aaron Nisbet',company:'',location:'Everett, WA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://sunny-desert-tsc7.here.now/'},
+ {id:8,name:'John Newman',company:'',location:'Albuquerque, NM',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://pure-pickle-wdpp.here.now/'},
+ {id:9,name:'Jim Mikelson',company:'Mikelson Machine Shop Inc',location:'South El Monte, CA',revenue:'~$3M',detail:'President applied directly',grant:'CMMC Gap Assessment',stars:2.5,stage:0,research:'https://jade-reef-q865.here.now/'},
  {id:10,name:'Warren Bizub',company:'SimIS Inc.',location:'Suffolk, VA',revenue:'$5M+',detail:'Veteran owned, 20 to 100 employees, Top Secret cleared, DHS/DoD',grant:'CMMC Gap Assessment',stars:4,stage:1,research:'https://tender-grove-k52s.here.now/'},
- {id:11,name:'Applicant 11',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:12,name:'Applicant 12',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:13,name:'Applicant 13',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:14,name:'Applicant 14',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
- {id:15,name:'Applicant 15',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
 ];
 
 let cards = JSON.parse(localStorage.getItem('athena_cards')) || JSON.parse(JSON.stringify(DEFAULT_CARDS));
