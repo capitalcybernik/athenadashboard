@@ -130,21 +130,29 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
   <div class="uc-type">Current Client Meeting</div>
   <div class="uc-section">
    <h3>Context</h3>
-   <p>Dave is a current client. GE is requiring subcontractors to have self assessment CMMC L2. We finished CMMC L1 for Schrader and are currently updating the SPRS system.</p>
+   <p>Dave is a current client. GE is requiring subcontractors to have self assessment CMMC L2. We finished CMMC L1 for Schrader and are currently updating the SPRS system. Proposal has not been discussed with Dave yet. We will have him apply for the Gap Assessment grant.</p>
   </div>
   <div class="uc-section">
    <h3>Agenda</h3>
    <ul>
     <li>Add CMMC L1 score on SPRS</li>
     <li>Discuss CMMC L2 and next steps</li>
-    <li>Gap Assessment is Step 1</li>
-    <li>Budget: $3,000/month for 12 months (can reduce by $1,000 after initial heavy lift). New engagement requires 3 year contract (currently on 1 year). This brings in additional revenue.</li>
+    <li>Gap Assessment is Step 1 (have Dave apply for the CGA grant)</li>
+    <li>Present proposal and budget</li>
+   </ul>
+  </div>
+  <div class="uc-section">
+   <h3>Proposal</h3>
+   <ul>
+    <li>$3,000/month for months 1 to 12</li>
+    <li>$2,500/month for months 13 to 36</li>
+    <li>New engagement requires 3 year contract (currently on 1 year)</li>
    </ul>
   </div>
   <div class="revenue-box">
    <div class="rv-label">Revenue Opportunity</div>
-   <div class="rv-value">$108,000</div>
-   <p style="font-size:13px;color:#636e72;margin-top:4px">$3,000/mo &times; 12 = $36,000/year &bull; 3 year contract = $108,000 total</p>
+   <div class="rv-value">$96,000</div>
+   <p style="font-size:13px;color:#636e72;margin-top:4px">$3,000/mo &times; 12 = $36,000 + $2,500/mo &times; 24 = $60,000 &bull; 3 year total = $96,000</p>
   </div>
  </div>
 </div>
@@ -171,7 +179,7 @@ const DEFAULT_CARDS = [
  {id:7,name:'Aaron Nisbet',company:'',location:'Everett, WA',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
  {id:8,name:'John Newman',company:'',location:'Albuquerque, NM',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
  {id:9,name:'Jim Mikelson',company:'Mikelson Machine Shop Inc',location:'South El Monte, CA',revenue:'~$3M',detail:'',grant:'CMMC Gap Assessment',stars:2.5,stage:0},
- {id:10,name:'Warren Bizub',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:1},
+ {id:10,name:'Warren Bizub',company:'SimIS Inc.',location:'Suffolk, VA',revenue:'$5M+',detail:'Veteran owned, 20 to 100 employees, Top Secret cleared, DHS/DoD',grant:'CMMC Gap Assessment',stars:4,stage:1,research:'https://tender-grove-k52s.here.now/'},
  {id:11,name:'Applicant 11',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
  {id:12,name:'Applicant 12',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
  {id:13,name:'Applicant 13',company:'',location:'',revenue:'',detail:'',grant:'CMMC Gap Assessment',stars:0,stage:0},
@@ -221,7 +229,7 @@ function renderKanban(){
     <div class="kc-grant">${c.grant}</div>
     <div class="kc-bottom">
      <div class="kc-stars">${starsHTML(c.stars)}</div>
-     <a href="#" class="kc-research">Research</a>
+     <a href="${c.research||'#'}" class="kc-research" ${c.research?'target="_blank"':''}>Research</a>
     </div>
     <select class="stage-select" onchange="moveCard(${c.id},this.value)">
      ${STAGES.map((s,i)=>`<option value="${i}"${i===c.stage?' selected':''}>${s}</option>`).join('')}
