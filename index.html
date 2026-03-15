@@ -274,6 +274,22 @@ function initData(){
   loadRemoteIntel();
   loadRemoteTasks();
   loadRemoteMeetings();
+  loadRemoteNotes();
+}
+
+async function loadRemoteNotes(){
+  try{
+    const r=await fetch('data/notes.json?t='+Date.now());
+    if(!r.ok)return;
+    const remote=await r.json();
+    const local=LS.get('notes',[]);
+    remote.forEach(rn=>{
+      if(!local.find(l=>l.id===rn.id)){
+        local.unshift(rn);
+      }
+    });
+    LS.set('notes',local);
+  }catch(e){console.log('notes.json not loaded',e)}
 }
 
 async function loadRemoteMeetings(){
