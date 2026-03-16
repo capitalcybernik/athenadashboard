@@ -14,5 +14,17 @@
     "category": "Sales",
     "pinned": true,
     "date": "2026-03-15"
+  },
+  {
+    "id": "note-sba-cmmc-roundtable",
+    "title": "SBA CMMC Roundtable Follow-Up \u2014 David Mullis (Office of Advocacy)",
+    "content": "Rick sent a follow-up email to David Mullis (SBA Office of Advocacy) after the CMMC Small Business Impacts Roundtable held March 12, 2026.\n\nKEY POINTS:\n- SBA hosted a roundtable on CMMC impacts on small businesses. Huge response/interest.\n- David Mullis wants continued feedback on CMMC impact and offered one-on-one calls.\n- Rick positioned CGA as the non-profit solving the cost/complexity barrier for SMBs in the defense supply chain.\n- Highlighted CGA's funded gap assessments, pen testing grants, and the 250 free CyberCert certifications.\n- Requested a 20 min call with David in the next couple weeks.\n\nCONTACT:\n- David Mullis, SBA Office of Advocacy (david.mullis@sba.gov)\n- SBA Office of Advocacy is the independent voice for small business in the executive branch, created by Congress in 1976.\n\nATTACHMENTS:\n- SBA Roundtable Follow-Up Email (data/sba-cmmc-roundtable-followup-david-mullis.pdf)\n- SBA CMMC Roundtable Presentation (data/sba-cmmc-roundtable-presentation-march2026.pdf)\n- GAO CMMC Report (referenced in email, not attached)\n\nACTION ITEMS:\n1. Follow up if no response within 1 week\n2. Prepare talking points for the one-on-one call with David\n3. Gather SMB barrier data to share with SBA Office of Advocacy\n\nSTRATEGIC VALUE: Direct relationship with SBA Office of Advocacy could influence CMMC policy in favor of small businesses and position CGA as a key stakeholder in the conversation.",
+    "category": "Government Relations",
+    "pinned": true,
+    "date": "2026-03-16",
+    "attachments": [
+      "data/sba-cmmc-roundtable-followup-david-mullis.pdf",
+      "data/sba-cmmc-roundtable-presentation-march2026.pdf"
+    ]
   }
 ]
