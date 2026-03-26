@@ -99,7 +99,6 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
   <div class="nav-item active" data-section="dashboard"><span class="ni">📊</span>Dashboard</div>
   <div class="nav-item" data-section="pipeline"><span class="ni">🔀</span>Pipeline</div>
   <div class="nav-item" data-section="upcoming"><span class="ni">📅</span>Upcoming</div>
-  <div class="nav-item" data-section="niche"><span class="ni">🎯</span>Niche</div>
   <div class="nav-item" data-section="notes"><span class="ni">📝</span>Notes</div>
   <div class="nav-item" data-section="settings"><span class="ni">⚙️</span>Settings</div>
  </div>
@@ -114,8 +113,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <div class="section active" id="dashboard">
  <h1 class="page-title">Dashboard</h1>
  <div class="summary-cards">
-  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">14</div></div>
-  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">13</div></div>
+  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">15</div></div>
+  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">14</div></div>
   <div class="s-card"><div class="label">Gap Assessment Approved</div><div class="value" id="dash-approved">1</div></div>
   <div class="s-card"><div class="label">Gap Assessment Completed</div><div class="value" id="dash-completed">0</div></div>
   <div class="s-card"><div class="label">Pipeline Value</div><div class="value editable" id="dash-pipeline-val" onclick="editPipelineValue(this)">$245,000</div></div>
@@ -175,279 +174,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 </div>
 
 <!-- NOTES -->
-<div class="section" id="niche">
- <h1 class="page-title">Target Niche Industries</h1>
- <p style="font-size:14px;color:#64748b;margin-bottom:24px;max-width:800px">These are the industries we target for CMMC compliance services and cyber grant programs. Every one of these verticals has contractors who handle CUI, hold DoD contracts, or sit in defense supply chains — making CMMC certification a requirement, not an option.</p>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🏭 Manufacturing</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>The backbone of the Defense Industrial Base. Over 300,000 manufacturers in the DIB handle CUI daily. Most are small to mid size shops that lack dedicated cybersecurity staff. CMMC Phase 2 enforcement (Nov 2026) puts every one of them on the clock. This is our largest addressable market.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🏗️ Construction</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Defense construction contractors build classified facilities, military bases, and secure infrastructure. They handle CUI in blueprints, specs, and project plans. Most have zero cybersecurity posture and don't realize CMMC applies to them until a prime flows it down.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>⚙️ Machine Shops</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>CNC machine shops produce precision parts for defense primes. They receive technical data packages (TDPs) containing CUI — drawings, tolerances, material specs. These are often 5 to 50 person shops with no IT department, making them the most vulnerable and most in need of guided compliance.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🔌 Electronics / PCB Fabrication</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>PCB fabricators and electronics manufacturers produce mission critical components for defense systems. Circuit board designs, firmware, and schematics are high value CUI. Supply chain security is a top DoD concern here — one compromised board can compromise an entire weapons system.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🔩 Metal Fabrication</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Welding, cutting, forming — metal fabricators supply structural components for defense platforms. They handle CUI in weld procedures, material certifications, and engineering drawings. High overlap with machine shops but typically larger operations with more complex supply chains.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>✈️ Aerospace</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Aerospace contractors are already under heavy compliance pressure (ITAR, AS9100, DFARS). CMMC adds another layer. Many mid tier aerospace firms have partial compliance but gaps in documentation, access controls, and incident response. High contract values make the ROI on compliance obvious.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>📐 Engineering</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Engineering firms design systems, components, and infrastructure for DoD programs. Their deliverables — CAD files, simulations, test data — are CUI by definition. Engineering firms often think compliance is "just IT" and underinvest in the organizational controls CMMC requires.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🚛 Logistics / 3PL</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Third party logistics providers move defense materials and handle shipping data, inventory manifests, and delivery schedules — all potentially CUI. They're an often overlooked part of the supply chain. When a prime gets audited, their 3PL is in scope too.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🧪 Testing Laboratories</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Labs that test materials, components, or systems for defense contracts generate and store test results, failure analyses, and performance data — all CUI. They're critical to the supply chain but rarely have cybersecurity programs beyond basic antivirus.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>👥 Staffing Firms</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Defense staffing agencies handle cleared personnel data, security clearance info, and placement details. When they embed contractors at DoD facilities, they become part of the CUI chain. CMMC compliance is increasingly being required in staffing RFPs for defense programs.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>💼 Professional Services</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Consulting, accounting, and legal firms that serve defense contractors often access CUI as part of their engagements. They're downstream in the supply chain but upstream in risk — one compromised advisor can expose multiple clients' sensitive data.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>📦 Packaging / Crating</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Military spec packaging and crating companies handle shipping specs, packing lists, and sometimes technical drawings for what they're protecting. MIL STD 2073 packaging requirements often come with CUI markings. Another "invisible" link in the defense supply chain.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🖨️ Printing / Documentation</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>Print shops that produce technical manuals, training materials, and documentation for defense programs handle CUI in every job. They often lack any cybersecurity controls despite processing some of the most sensitive readable content in the supply chain.</p>
-  </div>
- </div>
-
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🏛️ GSA Contractors</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <p>GSA Schedule holders selling to civilian agencies now face NIST 800 171 Rev 3 requirements under CIO IT Security 21 112. This is our market expansion play (gsareadynow.com). Same controls as CMMC but for the civilian side — doubling our addressable market beyond DoD.</p>
-  </div>
- </div>
-
-</div>
-
 <div class="section" id="notes">
  <h1 class="page-title">Notes</h1>
-
- <!-- Note 8: Cyber Liability Policy -->
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🛡️ Cyber Liability Policy — Capital Cyber &amp; TelcoUnited</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <div class="uc-section">
-    <h3>Providers</h3>
-    <ul>
-     <li><strong><a href="https://tigfin.com" target="_blank" style="color:#4a6cf7">Tigfin.com</a></strong> — Email sent to Tony Iannerelli, Rick cc'd</li>
-     <li><strong><a href="https://nextinsurance.com" target="_blank" style="color:#4a6cf7">Nextinsurance.com</a></strong></li>
-    </ul>
-    <h3>Status</h3>
-    <p>Outreach initiated. Awaiting quotes/responses.</p>
-   </div>
-  </div>
- </div>
-
- <!-- Note 7: Growth Now Summit -->
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>🎤 Growth Now Summit LIVE — April 2026</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <div class="uc-section">
-    <p style="margin-bottom:8px"><a href="https://www.justintschenck.com/" target="_blank" style="color:#4a6cf7;font-weight:600;font-size:15px">Event Website →</a></p>
-    <p style="font-size:13px;color:#64748b;margin-bottom:14px">One day entrepreneurial and personal growth experience. Business, wellness, spirituality, and relationships.</p>
-
-    <h3>📍 Venue</h3>
-    <p>Uptown! Knauer PAC<br>226 N. High Street, West Chester, PA 19380</p>
-
-    <h3>🏨 Accommodation</h3>
-    <p><strong>Elk Forge Bed &amp; Breakfast Inn</strong><br>
-    807 Elk Mills Road, Elkton, MD 21920<br>
-    <a href="http://www.elkforge.com" target="_blank" style="color:#4a6cf7">www.elkforge.com</a> | (410) 392 9007<br>
-    IMS Confirmation ID: 1872883 | Property Confirmation: 38266Z42<br>
-    Traveler: Nikhil Bon | 2 Adults<br>
-    Rooms: Elkton and Chesapeake Room (2 rooms)<br>
-    Check In: Thu 04/16 | Check Out: Sat 04/18 (2 nights)</p>
-
-    <h3>📅 Schedule</h3>
-    <ul>
-     <li><strong>Day 1 (4/16):</strong> VIP Welcome Reception, 7 PM to 9 PM at Teca Mezzanine, 38 East Gay St, West Chester</li>
-     <li><strong>Day 2 (4/17):</strong> Main Event. Registration 8:30 AM, Sessions 9 AM to 7 PM, After Party TBD</li>
-     <li><strong>Day 3 (4/18):</strong> Private Invite Only Half Day Mastermind, 10 AM (lunch included)</li>
-    </ul>
-
-    <h3>🎙️ Speakers</h3>
-    <ul>
-     <li><strong>Justin Schenck (Host)</strong> — INC Magazine Top 8 Podcaster, host of Growth Now Movement podcast (100+ countries weekly). Founder of PodBrand.io. Entrepreneur, speaker, event creator.</li>
-     <li><strong>Brooke Hemingway</strong> — Former nurse turned 7 figure leader. High Performance Coach, multi business entrepreneur, mom of 6. Specializes in helping women build businesses without burning out. Network marketing to coaching empire.</li>
-     <li><strong>Kyrus "Ky" Westcott</strong> — 2M+ followers across platforms. Mental health advocate and content creator (The Vibe With Ky). 15+ years marketing executive experience in digital strategy and branding. JCI Ten Outstanding Young Americans Award winner.</li>
-     <li><strong>Roberto Candelaria</strong> — Master Certified Business Coach and Partnership Strategist. Nearly 20 years coaching thousands of business owners from startups to 8 figure companies. Upcoming book: "The Willingness Factor" (late 2026). Focus: leadership, relationships, partnerships, profit.</li>
-     <li><strong>Dr. Cheryl Wood</strong> — 2x TEDx presenter, 28x bestselling author, 1,200+ keynotes across 18+ countries. Clients include NASA, FBI, United Nations, Capital One, Verizon. Founder of Global Speakers University. 2021 Presidential Lifetime Achievement Award.</li>
-     <li><strong>Michael King Jr.</strong> — Executive coach, recording artist, keynote speaker. Founder of TEAMS.Coach, creator of the TEAMS Method. Host of The Level Up Leader Podcast. Advises Fortune 500 to startups on team dynamics and identity driven leadership.</li>
-    </ul>
-   </div>
-  </div>
- </div>
-
- <!-- Note 6: GHL CMMC Gap Assessment Workflow v1 -->
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>⚙️ GHL CMMC Gap Assessment Workflow v1</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <div class="uc-section">
-    <p style="margin-bottom:12px"><a href="https://flint-pickle-4q5t.here.now/" target="_blank" style="color:#4a6cf7;font-weight:600;font-size:15px">View Full Workflow →</a></p>
-    <p style="font-size:13px;color:#64748b;margin-bottom:10px">5 email sequence for in kind grant applicants (~$1M revenue, varying CMMC maturity). Draft for GHL workflow.</p>
-    <h3>Sequence Overview</h3>
-    <ol>
-     <li><strong>Day 1: Book the Call</strong> — Scarcity + clear next step. "100 in kind assessments, spots going fast."</li>
-     <li><strong>Day 3: The CMMC Reality Check</strong> — Educate on Level 2 requirements. Common gaps: CUI scoping, access controls, incident response, SSP.</li>
-     <li><strong>Day 6: What This Actually Saves You</strong> — Show real cost ($50K to $150K+). Gap assessment prevents going in blind.</li>
-     <li><strong>Day 10: The Clock Is Ticking</strong> — Enforcement timeline. Final rule is live. 6 to 12 months to certify. Competitors are moving.</li>
-     <li><strong>Day 14: Supply Chain Referral Ask</strong> — Ask for sub/supplier/partner referrals who also need CMMC.</li>
-    </ol>
-    <h3>Key Messaging</h3>
-    <ul>
-     <li>All emails drive to "Book Your Call with Rick"</li>
-     <li>100 in kind assessments (scarcity lever)</li>
-     <li>Works for both early stage and companies already invested in CMMC prep</li>
-     <li>Final email pivots to supply chain referral generation</li>
-    </ul>
-   </div>
-  </div>
- </div>
-
- <!-- Note 5: MEP List and Email Templates -->
- <div class="note-card">
-  <div class="note-header" onclick="toggleNote(this)">
-   <h2>📧 MEP List and Email Templates</h2>
-   <span class="note-toggle">▼</span>
-  </div>
-  <div class="note-body">
-   <div class="uc-section">
-    <p style="margin-bottom:12px"><a href="https://snowy-epoch-a4qr.here.now/" target="_blank" style="color:#4a6cf7;font-weight:600;font-size:15px">View Full Templates →</a></p>
-    <p style="font-size:13px;color:#64748b;margin-bottom:10px">Prepared for Rick D, Executive Director | March 12, 2026</p>
-    <h3>Target MEPs (Send Order)</h3>
-    <ol>
-     <li><strong>GENEDGE Alliance (VA)</strong> — TOP PRIORITY. Local connection, defense/aerospace focus. Contact: info@genedgealliance.org</li>
-     <li><strong>NJMEP (NJ)</strong> — Already offers cybersecurity compliance services. Contact: info@njmep.org</li>
-     <li><strong>CONNSTEP (CT)</strong> — DoD cybersecurity compliance focus. Contact: info@connstep.org</li>
-     <li><strong>Brooklyn Navy Yard (NY)</strong> — 400+ businesses, potential venue partner. Contact: info@bnydc.org</li>
-     <li><strong>FloridaMakes (FL)</strong> — 26,000+ manufacturers, Cybersecurity Defense Training program. Contact: info@floridamakes.com</li>
-    </ol>
-    <h3>Offer</h3>
-    <ul>
-     <li>Speaking invitation for Cyber Grant Summit</li>
-     <li>20 complimentary CMMC Gap Assessment packages ($5K each)</li>
-     <li>Partnership for member distribution</li>
-    </ul>
-    <h3>Follow Up Strategy</h3>
-    <ul>
-     <li>Wait 3 to 4 business days before follow up</li>
-     <li>If no response, try phone call</li>
-     <li>Reference summit website in all communications</li>
-    </ul>
-   </div>
-  </div>
- </div>
 
  <!-- Note 4: CMMC Proposal Templates -->
  <div class="note-card">
@@ -457,7 +185,6 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
   </div>
   <div class="note-body">
    <div class="uc-section">
-    <p style="margin-bottom:10px;font-size:14px;color:#4a5568">CMMC Proposal templates when we are ready to present a solution to a potential lead interested in our CMMC services.</p>
     <p><a href="https://telcounitedmsp.sharepoint.com/:f:/s/CapitalCyberOperations/IgCBcvVvM3P9QowSNsx45rgbASaMWrlcaomw48V3ORZ2Aac?e=ydtyo7" target="_blank" style="color:#4a6cf7;font-weight:600;font-size:15px">Open SharePoint Folder →</a></p>
    </div>
   </div>
@@ -615,6 +342,7 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <script>
 const STAGES = ['Applied','Gap Assessment Approved','Gap Assessment Completed'];
 const DEFAULT_CARDS = [
+ {id:15,name:'David Lake',company:'Schrader & Co., Inc.',location:'Newton, NJ 07860',revenue:'$1M to $5M',detail:'Precision sheet metal fabrication and CNC machining. Founded 1968. Aerospace and OEM customers. 14,000 sq ft facility.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://chilly-tablet-38wm.here.now/'},
  {id:1,name:'Kyle Inthabandith',company:'K-I Machine Tool & Productions Inc.',location:'Loves Park, IL 61111',revenue:'$1M to $5M',detail:'Precision CNC manufacturing, aerospace and defense supply chains. Working toward AS9100, preparing for CMMC, NIST 800-171, ITAR registered. Source: Project Spectrum referral.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://golden-whistle-r0xf.here.now/'},
  {id:2,name:'Brandon Worrell',company:'KCSP Machine, LLC',location:'Kansas City, MO 64127',revenue:'$1M to $5M',detail:'Precision Machining / Aerospace. Eventually CMMC Level 2.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://purple-orchid-kclt.here.now/'},
  {id:3,name:'Jim Mikelson',company:'Mikelson Machine Shop Inc.',location:'South El Monte, CA 91733',revenue:'~$3M',detail:'Machine shop.',grant:'CMMC Gap Assessment',stars:2.5,stage:0,research:'https://jade-reef-q865.here.now/'},
