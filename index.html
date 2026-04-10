@@ -113,8 +113,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <div class="section active" id="dashboard">
  <h1 class="page-title">Dashboard</h1>
  <div class="summary-cards">
-  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">15</div></div>
-  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">14</div></div>
+  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">16</div></div>
+  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">15</div></div>
   <div class="s-card"><div class="label">Gap Assessment Approved</div><div class="value" id="dash-approved">1</div></div>
   <div class="s-card"><div class="label">Gap Assessment Completed</div><div class="value" id="dash-completed">0</div></div>
   <div class="s-card"><div class="label">Pipeline Value</div><div class="value editable" id="dash-pipeline-val" onclick="editPipelineValue(this)">$245,000</div></div>
@@ -342,6 +342,7 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <script>
 const STAGES = ['Applied','Gap Assessment Approved','Gap Assessment Completed'];
 const DEFAULT_CARDS = [
+ {id:16,name:'Bryan Hoffman',company:'Component Enterprises',location:'Norristown, PA 19401',revenue:'$5M to $25M',detail:'60+ year value added distributor and manufacturer for Military and Aerospace. Electronic components, connectors, switches. Serves defense primes.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://starry-echo-qnje.here.now/'},
  {id:15,name:'David Lake',company:'Schrader & Co., Inc.',location:'Newton, NJ 07860',revenue:'$1M to $5M',detail:'Precision sheet metal fabrication and CNC machining. Founded 1968. Aerospace and OEM customers. 14,000 sq ft facility.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://chilly-tablet-38wm.here.now/'},
  {id:1,name:'Kyle Inthabandith',company:'K-I Machine Tool & Productions Inc.',location:'Loves Park, IL 61111',revenue:'$1M to $5M',detail:'Precision CNC manufacturing, aerospace and defense supply chains. Working toward AS9100, preparing for CMMC, NIST 800-171, ITAR registered. Source: Project Spectrum referral.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://golden-whistle-r0xf.here.now/'},
  {id:2,name:'Brandon Worrell',company:'KCSP Machine, LLC',location:'Kansas City, MO 64127',revenue:'$1M to $5M',detail:'Precision Machining / Aerospace. Eventually CMMC Level 2.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://purple-orchid-kclt.here.now/'},
