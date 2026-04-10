@@ -113,8 +113,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <div class="section active" id="dashboard">
  <h1 class="page-title">Dashboard</h1>
  <div class="summary-cards">
-  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">16</div></div>
-  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">15</div></div>
+  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">18</div></div>
+  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">17</div></div>
   <div class="s-card"><div class="label">Gap Assessment Approved</div><div class="value" id="dash-approved">1</div></div>
   <div class="s-card"><div class="label">Gap Assessment Completed</div><div class="value" id="dash-completed">0</div></div>
   <div class="s-card"><div class="label">Pipeline Value</div><div class="value editable" id="dash-pipeline-val" onclick="editPipelineValue(this)">$245,000</div></div>
@@ -176,6 +176,76 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <!-- NOTES -->
 <div class="section" id="notes">
  <h1 class="page-title">Notes</h1>
+
+ <!-- Note 5: Bryan Hoffman / Component Enterprises -->
+ <div class="note-card">
+  <div class="note-header" onclick="toggleNote(this)">
+   <h2>★★★★☆ Tyler Holbrook / North Easton Machine Co. (Apr 9, 2026)</h2>
+   <span class="note-toggle">▼</span>
+  </div>
+  <div class="note-body">
+   <div class="uc-type">New Applicant · CMMC Gap Assessment · North Easton, MA · <a href="https://sturdy-yoga-6zts.here.now/" target="_blank" style="color:#4a6cf7">Research →</a></div>
+
+   <div class="uc-section">
+    <h3>Contact</h3>
+    <p>Tyler Holbrook · tholbrook@northeastonmachine.com · +1 (508) 238-6219<br>
+    North Easton Machine Co., Inc. · 218 Elm Street, North Easton, MA 02356<br>
+    northeastonmachine.com · GHL ID: cnwLJZKsz07oSdq1CKNS</p>
+   </div>
+
+   <div class="uc-section">
+    <h3>Company</h3>
+    <p>60+ year precision CNC machining shop in North Easton, MA. Four generations of family ownership. Products used in defense applications, airplanes, and high-tech systems. CNC turning and milling for metal and plastic components: pins, screws, pistons, rods, covers, plates, blocks. Serves electronic, medical, microwave, high-tech, commercial, and defense industries. About 9 employees.</p>
+   </div>
+
+   <div class="uc-section">
+    <h3>CMMC Relevance</h3>
+    <ul>
+     <li>Products explicitly used in defense applications and airplanes - confirmed CUI exposure through prime customer relationships</li>
+     <li>Microwave industry expertise means potential ITAR and export control requirements</li>
+     <li>Classic CNC machining vertical - same profile as our strongest converting applicants</li>
+     <li>Small team (9 employees) = high compliance burden, exactly who CGA is built for</li>
+     <li>Lead Rating: 4/5. High conversion potential.</li>
+     <li>Source: cybergrantsalliance.org/apply (direct traffic)</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <!-- Note 6: Melissa McCrary / DEPS -->
+ <div class="note-card">
+  <div class="note-header" onclick="toggleNote(this)">
+   <h2>★★★☆☆ Melissa McCrary / DEPS (Apr 10, 2026)</h2>
+   <span class="note-toggle">▼</span>
+  </div>
+  <div class="note-body">
+   <div class="uc-type">New Applicant · CMMC Gap Assessment · Albuquerque, NM · <a href="https://scarlet-cliff-7ddd.here.now/" target="_blank" style="color:#4a6cf7">Research →</a></div>
+
+   <div class="uc-section">
+    <h3>Contact</h3>
+    <p>Melissa McCrary · melissa@deps.org · +1 (505) 998-4910<br>
+    Directed Energy Professional Society (DEPS) · 2600 Yale Blvd. SE, Ste. 139, Albuquerque, NM 87106<br>
+    deps.org · GHL ID: LFqCMGqOCOwPvh7dfQKO</p>
+   </div>
+
+   <div class="uc-section">
+    <h3>Company</h3>
+    <p>DEPS is a professional non-profit society founded in 1999. Fosters research, development, and operational transition of directed energy technologies (High Energy Laser and High Power Microwave) for national defense. Melissa coordinates the DEPS short course program. DEPS members are defense contractors working on HEL and HPM systems.</p>
+   </div>
+
+   <div class="uc-section">
+    <h3>CMMC Relevance</h3>
+    <ul>
+     <li>DEPS is a professional society, NOT a defense contractor. CMMC may not directly apply to DEPS operations</li>
+     <li>However, DEPS members are actual defense contractors - potential high value referral network</li>
+     <li>Albuquerque location: Home to Sandia National Laboratories, strong defense tech ecosystem</li>
+     <li>Melissa as a contact is valuable for networking into the directed energy defense community</li>
+     <li>Lead Rating: 3/5. Explore whether her interest is for DEPS members or for herself</li>
+     <li>Source: cybergrantsalliance.org/apply (direct traffic)</li>
+    </ul>
+   </div>
+  </div>
+ </div>
 
  <!-- Note 5: Bryan Hoffman / Component Enterprises -->
  <div class="note-card">
@@ -381,7 +451,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <script>
 const STAGES = ['Applied','Gap Assessment Approved','Gap Assessment Completed'];
 const DEFAULT_CARDS = [
- {id:16,name:'Bryan Hoffman',company:'Component Enterprises',location:'Norristown, PA 19401',revenue:'$5M to $25M',detail:'60+ year value added distributor and manufacturer for Military and Aerospace. Electronic components, connectors, switches. Serves defense primes.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://starry-echo-qnje.here.now/'},
+ {id:17,name:'Tyler Holbrook',company:'North Easton Machine Co., Inc.',location:'North Easton, MA 02356',revenue:'$1M to $5M',detail:'60+ year precision CNC machining shop. Family owned 4 generations. Products used in defense and airplanes. Microwave and high-tech industries.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://sturdy-yoga-6zts.here.now/'},
+ {id:18,name:'Melissa McCrary',company:'Directed Energy Professional Society (DEPS)',location:'Albuquerque, NM 87106',revenue:'Unknown',detail:'Professional non-profit society. Directed energy tech for national defense. Coordinates DEPS short course program. Members are defense contractors.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://scarlet-cliff-7ddd.here.now/'},
  {id:15,name:'David Lake',company:'Schrader & Co., Inc.',location:'Newton, NJ 07860',revenue:'$1M to $5M',detail:'Precision sheet metal fabrication and CNC machining. Founded 1968. Aerospace and OEM customers. 14,000 sq ft facility.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://chilly-tablet-38wm.here.now/'},
  {id:1,name:'Kyle Inthabandith',company:'K-I Machine Tool & Productions Inc.',location:'Loves Park, IL 61111',revenue:'$1M to $5M',detail:'Precision CNC manufacturing, aerospace and defense supply chains. Working toward AS9100, preparing for CMMC, NIST 800-171, ITAR registered. Source: Project Spectrum referral.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://golden-whistle-r0xf.here.now/'},
  {id:2,name:'Brandon Worrell',company:'KCSP Machine, LLC',location:'Kansas City, MO 64127',revenue:'$1M to $5M',detail:'Precision Machining / Aerospace. Eventually CMMC Level 2.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://purple-orchid-kclt.here.now/'},
