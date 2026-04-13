@@ -113,8 +113,8 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <div class="section active" id="dashboard">
  <h1 class="page-title">Dashboard</h1>
  <div class="summary-cards">
-  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">18</div></div>
-  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">17</div></div>
+  <div class="s-card"><div class="label">Total Applicants</div><div class="value" id="dash-total">22</div></div>
+  <div class="s-card"><div class="label">In Applied</div><div class="value" id="dash-applied">21</div></div>
   <div class="s-card"><div class="label">Gap Assessment Approved</div><div class="value" id="dash-approved">1</div></div>
   <div class="s-card"><div class="label">Gap Assessment Completed</div><div class="value" id="dash-completed">0</div></div>
   <div class="s-card"><div class="label">Pipeline Value</div><div class="value editable" id="dash-pipeline-val" onclick="editPipelineValue(this)">$245,000</div></div>
@@ -207,6 +207,65 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
      <li>Small team (9 employees) = high compliance burden, exactly who CGA is built for</li>
      <li>Lead Rating: 4/5. High conversion potential.</li>
      <li>Source: cybergrantsalliance.org/apply (direct traffic)</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <!-- Note 6: Sarina Hartman / MTS Partners LLC -->
+ <div class="note-card">
+  <div class="note-header" onclick="toggleNote(this)">
+   <h2>★★★☆☆ Sarina Hartman / MTS Partners LLC (Apr 13, 2026)</h2>
+   <span class="note-toggle">▼</span>
+  </div>
+  <div class="note-body">
+   <div class="uc-type">New Applicant · CMMC Gap Assessment · Summerville, SC · <a href="https://wander-turret-fqft.here.now/" target="_blank" style="color:#4a6cf7">Research →</a></div>
+   <div class="uc-section">
+    <h3>Contact</h3>
+    <p>Sarina Hartman · shartman@mtspartnersllc.com · +1 (843) 901-9198<br>
+    MTS Partners LLC · Summerville, SC · GHL ID: 0tKaKO8lwVjU6IRtiEAy</p>
+   </div>
+   <div class="uc-section">
+    <h3>Company</h3>
+    <p>Certified Women-Owned Small Business (WOSB). 25+ years in engineering services, proposal development, and program management. Supports government contractors and federal agencies with contracts, earned value metrics, and process improvement. Summerville SC location has over $419M in defense contracts in the area.</p>
+   </div>
+   <div class="uc-section">
+    <h3>CMMC Relevance</h3>
+    <ul>
+     <li>Works with government contractors on proposal development and federal requirements. CUI/DFARS flowdown applies to their contract work</li>
+     <li>Potential referral partner: they help contractors win government work, CMMC is now a contract requirement on every DoD solicitation</li>
+     <li>Could be exploring CGA for their own needs or as a service for their client base</li>
+     <li>Lead Rating: 3.5/5. Clarify intent before closing</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+
+ <!-- Note 7: Ruth Abate / XEINA -->
+ <div class="note-card">
+  <div class="note-header" onclick="toggleNote(this)">
+   <h2>★★★☆☆ Ruth Abate / XEINA (Apr 12, 2026)</h2>
+   <span class="note-toggle">▼</span>
+  </div>
+  <div class="note-body">
+   <div class="uc-type">New Applicant · CMMC Gap Assessment · Arlington, VA · <a href="https://starry-silence-t59b.here.now/" target="_blank" style="color:#4a6cf7">Research →</a></div>
+   <div class="uc-section">
+    <h3>Contact</h3>
+    <p>Ruth Abate · ruth@xeina.us<br>
+    XEINA · Arlington, VA · xeina.us · GHL ID: B1bCsHqZn3EQEf2BSYpZ</p>
+   </div>
+   <div class="uc-section">
+    <h3>Company</h3>
+    <p>XEINA is a CMMC automation SaaS platform. Tagline: Certification without the consultant. Automates gap analysis, SSP generation, adversarial C3PAO simulation, and SPRS monitoring for defense contractors. Foundation $1,499/mo, Professional $3,499/mo, Enterprise $7,999/mo. Arlington VA, deep in the DC defense corridor.</p>
+   </div>
+   <div class="uc-section">
+    <h3>CMMC Relevance</h3>
+    <ul>
+     <li>XEINA is a DIRECT COMPETITOR to Capital Cyber managed compliance services</li>
+     <li>Applying for CGA suggests they need the assessment for themselves OR they are exploring CGA as something to recommend to their customers</li>
+     <li>Arlington VA location near DoD headquarters and major defense primes</li>
+     <li>Opportunity: If XEINA recommends CGA to their customer base, that is a referral pipeline. Worth exploring a partnership conversation</li>
+     <li>Lead Rating: 3/5. Clarify intent, explore potential partnership</li>
     </ul>
    </div>
   </div>
@@ -451,9 +510,12 @@ h1.page-title{font-size:24px;font-weight:700;margin-bottom:24px}
 <script>
 const STAGES = ['Applied','Gap Assessment Approved','Gap Assessment Completed'];
 const DEFAULT_CARDS = [
+ {id:20,name:'Sarina Hartman',company:'MTS Partners LLC',location:'Summerville, SC',revenue:'$1M to $5M',detail:'Women-Owned Small Business (WOSB). 25+ years engineering services, proposal development, and program management for government contractors.',grant:'CMMC Gap Assessment',stars:3.5,stage:0,research:'https://wander-turret-fqft.here.now/'},
+ {id:21,name:'Ruth Abate',company:'XEINA',location:'Arlington, VA',revenue:'$5M to $25M',detail:'CMMC automation SaaS platform. Arlington VA. Direct competitor to Capital Cyber managed compliance. Worth exploring as referral partner.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://starry-silence-t59b.here.now/'},
  {id:17,name:'Tyler Holbrook',company:'North Easton Machine Co., Inc.',location:'North Easton, MA 02356',revenue:'$1M to $5M',detail:'60+ year precision CNC machining shop. Family owned 4 generations. Products used in defense and airplanes. Microwave and high-tech industries.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://sturdy-yoga-6zts.here.now/'},
- {id:18,name:'Melissa McCrary',company:'Directed Energy Professional Society (DEPS)',location:'Albuquerque, NM 87106',revenue:'Unknown',detail:'Professional non-profit society. Directed energy tech for national defense. Coordinates DEPS short course program. Members are defense contractors.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://scarlet-cliff-7ddd.here.now/'},
+ {id:22,name:'Melissa McCrary',company:'Directed Energy Professional Society (DEPS)',location:'Albuquerque, NM 87106',revenue:'Unknown',detail:'Professional non-profit society. Directed energy tech for national defense. Coordinates DEPS short course program. Members are defense contractors.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://scarlet-cliff-7ddd.here.now/'},
  {id:15,name:'David Lake',company:'Schrader & Co., Inc.',location:'Newton, NJ 07860',revenue:'$1M to $5M',detail:'Precision sheet metal fabrication and CNC machining. Founded 1968. Aerospace and OEM customers. 14,000 sq ft facility.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://chilly-tablet-38wm.here.now/'},
+ {id:23,name:'Bryan Hoffman',company:'Component Enterprises',location:'Norristown, PA 19401',revenue:'$5M to $25M',detail:'60+ year value added distributor and manufacturer for Military and Aerospace. Electronic components, connectors, switches. Serves defense primes.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://starry-echo-qnje.here.now/'},
  {id:1,name:'Kyle Inthabandith',company:'K-I Machine Tool & Productions Inc.',location:'Loves Park, IL 61111',revenue:'$1M to $5M',detail:'Precision CNC manufacturing, aerospace and defense supply chains. Working toward AS9100, preparing for CMMC, NIST 800-171, ITAR registered. Source: Project Spectrum referral.',grant:'CMMC Gap Assessment',stars:4,stage:0,research:'https://golden-whistle-r0xf.here.now/'},
  {id:2,name:'Brandon Worrell',company:'KCSP Machine, LLC',location:'Kansas City, MO 64127',revenue:'$1M to $5M',detail:'Precision Machining / Aerospace. Eventually CMMC Level 2.',grant:'CMMC Gap Assessment',stars:3,stage:0,research:'https://purple-orchid-kclt.here.now/'},
  {id:3,name:'Jim Mikelson',company:'Mikelson Machine Shop Inc.',location:'South El Monte, CA 91733',revenue:'~$3M',detail:'Machine shop.',grant:'CMMC Gap Assessment',stars:2.5,stage:0,research:'https://jade-reef-q865.here.now/'},
